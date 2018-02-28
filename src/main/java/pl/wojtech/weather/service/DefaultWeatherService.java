@@ -22,6 +22,7 @@ import pl.wojtech.weather.model.json.WeatherForecastJSON;
 @Service
 public class DefaultWeatherService implements WeatherService {
 
+    public static final String API_OPENWEATHERMAP_ADDRESS = "http://api.openweathermap.org/data/2.5/forecast?";
     @Value("${appid}")
     private String weatherApiKey;
 
@@ -36,7 +37,7 @@ public class DefaultWeatherService implements WeatherService {
         RestTemplate restTemplate = new RestTemplate();
         String country = WeatherForecastConfiguration.getCityCountryData().get(location);
         String query = "q=" + location + "," + country;
-        ResponseEntity<WeatherForecastJSON> weatherForecastResponse = restTemplate.getForEntity("http://api.openweathermap.org/data/2.5/forecast?" + query + "&appid=" + weatherApiKey, WeatherForecastJSON.class);
+        ResponseEntity<WeatherForecastJSON> weatherForecastResponse = restTemplate.getForEntity(API_OPENWEATHERMAP_ADDRESS + query + "&appid=" + weatherApiKey, WeatherForecastJSON.class);
 
         return weatherForecastResponse.getBody();
     }
