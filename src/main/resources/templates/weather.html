@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <!-- Plotly.js -->
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+        <script th:src="@{/js/jquery-3.3.1.min.js}" href="../static/js/jquery-3.3.1.min.js"></script>
+
+        <script th:src="@{/js/forecast.js}" href="../static/js/forecast.js"></script>
+    </head>
+    <body>
+
+    <button id="London" type='button' >London weather</button>
+    <button id="NY" type='button' >New York weather</button>
+    <button id="Washington" type='button' >Washington weather</button>
+
+    <div id="tempHumDiv"></div>
+    <div id="pressDiv"></div>
+
+    </body>
+</html>
