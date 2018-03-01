@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.WireMockServer;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -62,6 +63,11 @@ public class SpringBootWebApplicationTests {
 						.withStatus(200)
 						.withHeader("Content-Type", "application/json")
 						.withHeader("Cache-Control", "no-cache").withBody(jsonMessage)));
+	}
+
+	@AfterClass
+	public static void afterEnd() throws JsonProcessingException {
+		wireMockServer.stop();
 	}
 
 	@Test
